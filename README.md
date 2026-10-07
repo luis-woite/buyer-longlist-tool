@@ -32,6 +32,22 @@ buyer_longlist_tool/
     └── output/           # writes the Excel longlist
 ```
 
+## Two ways to use this
+
+**`python main.py`** — full longlist build. Discovers candidates across both
+strategic and financial buyers. More thorough, more expensive (more searches).
+
+**`python check_fit.py "Company Name"`** — cheaper, narrower check: is this
+*one specific* company a plausible buyer for your target? One research
+question instead of open-ended discovery, meaningfully fewer searches, and a
+single API call instead of two. Good for testing the pipeline cheaply, or
+for checking a specific name you already have in mind rather than discovering
+a whole list. Prints straight to the console, no Excel file.
+
+Both share the same grounding discipline and the same drift tripwire — if the
+response doesn't actually mention both the target and the candidate by name,
+that's treated as a failure rather than a plausible-looking wrong answer.
+
 ## Running it
 
 ```bash
